@@ -35,7 +35,7 @@ main() {
   echo "Starting Shell script"
   
   while true; do
-    inotifywait -e create -q "$PENDRIVE_DIR" --format "%w%f" |
+    inotifywait -e create,close_write,moved_to -q "$PENDRIVE_DIR" --format "%w%f" |
     while read -r file; do
       process_file "$file"
     done
